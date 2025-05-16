@@ -4,15 +4,7 @@ require_once(__DIR__ . '/oeuvres.php');
 ?>
     <main>
         <?php
-        $id = $_GET['id'];
-        $oeuvre = null;
-        /** @var array $oeuvres */
-        foreach ($oeuvres as $key => $oeuvreData) {
-            if ($key == $id) {
-                $oeuvre = $oeuvreData;
-                break;
-            }
-        }
+        $oeuvre = $oeuvres[$_GET['id']] ?? null;
         if ($oeuvre === null) { ?>
             <div><?php echo('Cette oeuvre n\'existe pas.'); ?></div>
         <?php } else { ?>
@@ -29,7 +21,6 @@ require_once(__DIR__ . '/oeuvres.php');
                 </div>
             </article>
         <?php } ?>
-
     </main>
 
 <?php require_once(__DIR__ . '/footer.php'); ?>
